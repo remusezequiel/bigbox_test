@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <section style="background: #CCBBCC; "class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          BigBox Test
+        </h1>
+
+        <p class="lead text-muted">
+          Ejercicio correspondiente al test de bigbox.
+        </p>
+
+        <p>
+          <a href="{% url 'box:box_list' %}" class="btn btn-primary my-2">
+            Listar Boxes
+          </a>
+        </p>
+      </div>
+  </section>
+{% endblock content %}
+{# {% url 'box_list' %} #}

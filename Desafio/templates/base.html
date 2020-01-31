@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title> Bigbox </title>
+	<meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type='text/css' />
+	<link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}" type='text/css' />
+  <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %}" type='text/css' />
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+<!-- 	<script src="{% static 'js/general.js' %}"></script> -->
+</head>
+
+<body class="body" style="background-color:#f6f6f6">
+	   {% include 'nav.html' %}
+	<div>
+		<main role="main">
+			<div class="album py-5 bg-light">
+        <div class="container">
+					 {% block content %}
+
+				   {% endblock %}
+				</div>
+			</div>
+	 </main>
+	</div>
+</body>
+
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="{%url 'index' %}">Home</a>
+    </p>
+    </div>
+</footer>

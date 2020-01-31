@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section style="background: #CCBBCC;" class="jumbotron text-center">
+    <div class="container">
+      <h1>
+        Lista de Boxes
+      </h1>
+
+      <p class="lead text-muted">
+        Url dedicada a listar las boxes
+      </p>
+
+      <p>
+        <a href="{% url 'index' %}" class="btn btn-primary my-2">
+          Home
+        </a>
+      </p>
+    </div>
+</section>
+
+{% for box in boxes %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4 shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+              <title>{{ box.name }}</title>
+              <rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="60%" fill="#ec4eef" dy=".3em">{{ box.name }}</text></svg>
+             <div class="card-body">
+               <p class="card-text">{{ box.description|safe }}</p>
+               <h3>${{ box.price }}</h3>
+               <div class="d-flex justify-content-between align-items-center">
+                 <div class="btn-group">
+                   <a href="{% url 'box:box_detail' box.id %}" class="btn btn-primary my-2">
+                     Ver
+                   </a>
+                 </div>
+                 <small class="text-muted">
+                    {{ box.category }}
+                 </small>
+<!--
+                 <small class="text-muted">
+                   {% for act in box.activities.all %}
+                    {{ act }}
+                   {% endfor %}
+                 </small>
+-->
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+{% endfor %}
+{% endblock content %}
+
+{# {% url 'box-detail' box.id %} #}
+{# {% url 'box_detail' box.category.slug %} #}
+{# {% url 'box_detail' object.category.slug %} #}

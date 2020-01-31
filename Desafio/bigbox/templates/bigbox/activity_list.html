@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section style="background: #CCBBCC;" class="jumbotron text-center">
+    <div class="container">
+      <h1>
+        Lista de activities
+      </h1>
+
+      <p class="lead text-muted">
+        Url dedicada a listar las activities del box
+      </p>
+
+      <p>
+        <a href="{% url 'index' %}" class="btn btn-primary my-2">
+          Home
+        </a>
+      </p>
+    </div>
+</section>
+
+
+{% include 'bigbox/paginate.html' %}
+
+{% for act in lola.activities.all %}
+{% for o in object_list %}
+    {% if act.name == o.name %}
+    <div class="album py-5 bg-light">
+      <div class="container">
+          <div class="row ">
+            <div class="col-md-12 sm-6">
+              <div class="card mb-4 shadow-sm ">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                  <title>{{ act.id }} ({{ page_obj.paginator.count }})</title>
+                  <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".2em">{{ act.name }}</text></svg>
+                 <div class="card-body"
+                   <p class="card-text">{{ act.description|safe }}</p>
+                   <div class="d-flex justify-content-between align-items-center">
+                     <div class="btn-group">
+
+                       <a href="{% url 'box:activity_detail' lola.id act.id %}" class="btn btn-primary my-2">Home</a>
+                       {# {% url 'box:activity_detail' box.id act.id %} #}
+                     </div>
+                     <small class="text-muted"></small>
+                   </div>
+                 </div>
+               </div>
+             </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% include 'bigbox/paginate.html' %}
+
+
+{% endblock content %}
