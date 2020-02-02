@@ -84,6 +84,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -94,8 +95,8 @@ DATABASES = {
         'DATABASE_PORT' : '5432',
     }
 }
-"""
 
+"""
 import dj_database_url
 from decouple import config
 
@@ -105,6 +106,7 @@ DATABASES = {
     )
 }
 
+"""
 #db_from_env = dj_database_url.config(conn_max_age=500)
 #DATABASES['default'].update(db_from_env)
 
