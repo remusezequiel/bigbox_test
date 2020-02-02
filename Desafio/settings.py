@@ -26,8 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #SECRET_KEY = '2!5y+t=mi*7xm++li7(whvkmmjgmmf4(i2*(rbbe=*kx9t1u%o'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = os.environ.get('DEBUG_VALUE')
+#DEBUG = True
+DEBUG = os.environ.get('DEBUG_VALUE')
 
 ALLOWED_HOSTS = ['bigboxtest.herokuapp.com']
 
@@ -85,15 +85,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-import dj_database_url
-from decouple import config
-
-DATABASES = {
-    'default':dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
 """
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
