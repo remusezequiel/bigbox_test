@@ -1,3 +1,25 @@
+{% if activities.has_previous %}
+  <a class="btn btn-outline-info mb-4" href="?page=1">Primera</a>
+  <a class="btn btn-outline-info mb-4" href="?page={{ activities.previous_page_number }}">anterior</a>
+{% endif %}
+
+
+{% for num in activities.paginator.page_range %}
+  {% if page_obj.number == num %}
+    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+  {% elif num > activities.number|add:'-3' and num < activities.number|add:'3'%}
+    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+  {% endif %}
+{% endfor %}
+
+{% if activities.has_next %}
+  <a class="btn btn-outline-info mb-4" href="?page={{ activities.next_page_number }}">Siguiente</a>
+  <a class="btn btn-outline-info mb-4" href="?page={{ activities.paginator.num_pages }}">Ultima</a>
+{% endif %}
+
+
+
+<!--
 {% if is_paginated %}
     {% if page_obj.has_previous %}
       <a class="btn btn-outline-info mb-4" href="?page=1">Primera</a>
@@ -18,3 +40,4 @@
       <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Ultima</a>
     {% endif %}
 {% endif %}
+-->

@@ -42,6 +42,33 @@ class BoxDetailView(DetailView, BoxObjectMixin):
 ################################################################################
 
 ################################################################################
+class ActivityListView(DetailView):
+    model = Box
+    template_name = 'bigbox/activity_list.html'
+    #ordering = ['name']
+    #paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        """
+        En esta funcion defino un contexto con las activities
+        del objeto tomado y luego realizo su paginacion.
+        """
+        context = super(ActivityListView, self).get_context_data(**kwargs)
+        page = self.request.GET.get('page')
+        activities = Paginator(self.object.activities.all(), 20)
+        context['activities'] = activities.get_page(page)
+        context['activities_number'] = self.object.activities.count()
+        return context
+
+    def get_object(self):
+        """
+        Tomo el id del Box correspondiente al del detalle
+        """
+        #self.kwargs se utiliza para acceder a parametros en class based views
+        id = self.kwargs.get("id")
+        return get_object_or_404(Box, id=id)
+
+"""
 class ActivityListView(ListView, BoxObjectMixin):
     model = Activity
     template_name = 'bigbox/activity_list.html'
@@ -52,6 +79,7 @@ class ActivityListView(ListView, BoxObjectMixin):
         context=super().get_context_data(*args,**kwargs)
         context['lola'] = self.get_object()
         return context
+"""
 ################################################################################
 
 ################################################################################

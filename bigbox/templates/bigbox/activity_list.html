@@ -21,7 +21,7 @@
 
 
 {% include 'bigbox/paginate.html' %}
-
+<!--
 {% for act in lola.activities.all %}
 {% for o in object_list %}
     {% if act.name == o.name %}
@@ -51,7 +51,33 @@
     {% endif %}
   {% endfor %}
 {% endfor %}
+-->
 
+{% for a in activities %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row ">
+          <div class="col-md-12 sm-6">
+            <div class="card mb-4 shadow-sm ">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                <title>{{ a.id }} ({{ page_obj.paginator.count }})</title>
+                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".2em">{{ a.name }}</text></svg>
+               <div class="card-body"
+                 <p class="card-text">{{ a.description|safe }}</p>
+                 <div class="d-flex justify-content-between align-items-center">
+                   <div class="btn-group">
+
+                     <a href="{% url 'box:activity_detail' object.id a.id %}" class="btn btn-primary my-2">Home</a>
+                     {# {% url 'box:activity_detail' box.id act.id %} #}
+                   </div>
+                   <small class="text-muted"></small>
+                 </div>
+               </div>
+             </div>
+           </div>
+      </div>
+    </div>
+{% endfor %}
 {% include 'bigbox/paginate.html' %}
 
 
