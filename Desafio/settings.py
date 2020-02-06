@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'Desafio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-<<<<<<< HEAD
+
 """
 DATABASES = {
     'default': {
@@ -98,8 +98,6 @@ DATABASES = {
         'DATABASE_PORT' : '5432',
     }
 }
-=======
->>>>>>> 2f98919485164d90c0213fefb0d3ee38acbdec30
 
 
 
