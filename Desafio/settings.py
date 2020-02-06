@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'Desafio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+<<<<<<< HEAD
 """
 DATABASES = {
     'default': {
@@ -97,9 +98,31 @@ DATABASES = {
         'DATABASE_PORT' : '5432',
     }
 }
+=======
+>>>>>>> 2f98919485164d90c0213fefb0d3ee38acbdec30
 
 
 
+"""
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+}
+}
+"""
+"""
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME' : 'bigbox',
+'USER' : 'postgres',
+'PASSWORD' : '197382465e',
+'HOST' : '127.0.0.1',
+'DATABASE_PORT' : '5432',
+}
+}
+"""
 #db_from_env = dj_database_url.config(conn_max_age=500)
 #DATABASES['default'].update(db_from_env)
 
